@@ -1,17 +1,20 @@
 import React, {FC} from 'react';
 import {Layout, Row, Col, Menu, MenuProps} from 'antd';
 import {Link} from 'react-router-dom';
+
+import useAppSelector from '../../hooks/useAppSelector';
+
 import {RouteNames} from '../../routes';
 
 import './style.scss';
 
 const Navbar: FC = () => {
-  const auth = true;
+  const {isAuth} = useAppSelector(({auth}) => auth);
 
   const menuItems: MenuProps['items'] = [
     {
       key: '1',
-      label: auth ? (
+      label: isAuth ? (
         <div className="menu__user">
           <div>Username</div>
           <div onClick={() => console.log('Выйти')}>Выйти</div>

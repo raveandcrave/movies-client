@@ -2,10 +2,12 @@ import React from 'react';
 import {Routes, Route} from 'react-router-dom';
 import {privateRoutes} from '../../routes';
 import {publicRoutes} from '../../routes';
+import useAppSelector from '../../hooks/useAppSelector';
 
 const AppRouter = () => {
-  const auth = true;
-  return auth ? (
+  const {isAuth} = useAppSelector(({auth}) => auth);
+
+  return isAuth ? (
     <Routes>
       {privateRoutes.map((route) => (
         <Route key={route.path} path={route.path} element={<route.element />} />
