@@ -1,0 +1,8 @@
+.menu {
+  justify-content: end;
+
+  &__user {
+    display: flex;
+    gap: 10px;
+  }
+}
