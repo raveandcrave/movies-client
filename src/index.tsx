@@ -6,6 +6,8 @@ import {BrowserRouter} from 'react-router-dom';
 import {store} from './store';
 import App from './App';
 
+console.log(process.env.REACT_APP_API_URL);
+
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 
