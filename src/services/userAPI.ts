@@ -1,21 +1,15 @@
-import jwt_decode, {JwtPayload} from 'jwt-decode';
-
 import {$host, $authHost} from './http';
-import {Credentials, User} from '../types';
+import {AuthResponse} from '../types';
+import {AxiosResponse} from 'axios';
 
-type TokenDto = {};
-//нужно объединить интерфейсы user и jwtpayload в один
-
-export const registration = async (email: string, password: string) => {
-  const response = await $host.post('auth/registration', {email, password});
-  return response;
+export const login = async (email: string, password: string): Promise<AxiosResponse<AuthResponse>> => {
+  return $host.post<AuthResponse>('auth/login', {email, password});
 };
 
-export const login = async ({email, password}: Credentials) => {
-  const {data} = await $host.post('auth/login', {email, password});
-  const decodedToken = jwt_decode<TokenDto>(data.token);
+export const registration = async (email: string, password: string): Promise<AxiosResponse<AuthResponse>> => {
+  return $host.post<AuthResponse>('auth/registration', {email, password});
+};
 
-  console.log('decodedToken', decodedToken);
-
-  return decodedToken;
+export const logout = async (): Promise<void> => {
+  return $host.post('auth/logout');
 };

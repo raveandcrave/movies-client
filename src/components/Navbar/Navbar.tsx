@@ -3,6 +3,9 @@ import {Layout, Row, Col, Menu, MenuProps} from 'antd';
 import {Link} from 'react-router-dom';
 
 import useAppSelector from '../../hooks/useAppSelector';
+import useAppDispatch from '../../hooks/useAppDispatch';
+
+import {logoutUser} from '../../store/reducers/auth/actionCreators';
 
 import {RouteNames} from '../../routes';
 
@@ -10,6 +13,7 @@ import './style.scss';
 
 const Navbar: FC = () => {
   const {isAuth} = useAppSelector(({auth}) => auth);
+  const dispatch = useAppDispatch();
 
   const menuItems: MenuProps['items'] = [
     {
@@ -17,7 +21,7 @@ const Navbar: FC = () => {
       label: isAuth ? (
         <div className="menu__user">
           <div>Username</div>
-          <div onClick={() => console.log('Выйти')}>Выйти</div>
+          <div onClick={() => dispatch(logoutUser())}>Выйти</div>
         </div>
       ) : (
         <Link to={RouteNames.LOGIN}>Войти</Link>
