@@ -1,4 +1,4 @@
-import {FC, useEffect} from 'react';
+import {FC} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Form, Input, Button} from 'antd';
 import * as Yup from 'yup';
@@ -7,7 +7,6 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import {UserOutlined, LockOutlined} from '@ant-design/icons';
 
 import useAppDispatch from '../../hooks/useAppDispatch';
-import useAppSelector from '../../hooks/useAppSelector';
 import {loginUser} from '../../store/reducers/auth/actionCreators';
 
 import {loginSchema} from '../../utils/validationSchemas';
@@ -18,7 +17,6 @@ type LoginUser = Yup.InferType<typeof loginSchema>;
 
 const LoginForm: FC = () => {
   const navigate = useNavigate();
-  const {isAuth} = useAppSelector((state) => state.auth);
 
   const {handleSubmit, formState, control} = useForm<LoginUser>({
     mode: 'onBlur',
@@ -32,12 +30,11 @@ const LoginForm: FC = () => {
       email,
       password,
     };
-    dispatch(loginUser(user));
+    dispatch(loginUser(user))
+      .unwrap()
+      .then(() => navigate('/'))
+      .catch((e: string) => console.error(e));
   });
-
-  useEffect(() => {
-    isAuth && navigate('/');
-  }, [isAuth]);
 
   return (
     <form className="login-form" onSubmit={onSubmit}>
