@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import {FC} from 'react';
 import {Layout, Row} from 'antd';
 import LoginForm from '../components/LoginForm';
 
