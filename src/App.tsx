@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from 'react';
+import {FC, useEffect} from 'react';
 import axios from 'axios';
 import {Layout} from 'antd';
 import AppRouter from './components/AppRouter';
