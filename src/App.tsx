@@ -1,12 +1,16 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import axios from 'axios';
+import {Layout} from 'antd';
 import AppRouter from './components/AppRouter';
 import Navbar from './components/Navbar';
-import {Layout} from 'antd';
+import useAppDispatch from './hooks/useAppDispatch';
+
+import {checkAuth} from './store/reducers/auth/actionCreators';
 
 import './App.scss';
 
 const App: FC = () => {
+  const dispatch = useAppDispatch();
   // const options = {
   //   method: "GET",
   //   url: "https://movie-database-alternative.p.rapidapi.com/",
@@ -40,6 +44,12 @@ const App: FC = () => {
   //   .catch(function (error) {
   //     console.error(error);
   //   });
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      dispatch(checkAuth());
+    }
+  }, []);
 
   return (
     <Layout>
