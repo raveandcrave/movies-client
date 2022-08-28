@@ -4,12 +4,14 @@ import {Form, Input, Button} from 'antd';
 import * as Yup from 'yup';
 import {useForm, Controller} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
-import {UserOutlined, LockOutlined} from '@ant-design/icons';
+import {MailOutlined, LockOutlined} from '@ant-design/icons';
+import {Link} from 'react-router-dom';
 
 import useAppDispatch from '../../hooks/useAppDispatch';
 import {loginUser} from '../../store/reducers/auth/actionCreators';
+import {RouteNames} from '../../routes';
 
-import {loginSchema} from '../../utils/validationSchemas';
+import loginSchema from './loginSchema';
 
 import './style.scss';
 
@@ -46,7 +48,7 @@ const LoginForm: FC = () => {
             <Form.Item help={formState.errors.email?.message} className="login-form__item">
               <Input
                 size="large"
-                prefix={<UserOutlined className="site-form-item-icon" />}
+                prefix={<MailOutlined className="site-form-item-icon" />}
                 placeholder="E-mail"
                 status={formState.errors.email ? 'error' : ''}
                 {...field}
@@ -70,10 +72,17 @@ const LoginForm: FC = () => {
           </Form.Item>
         )}
       />
-
-      <Button size="large" type="primary" htmlType="submit">
-        Войти
-      </Button>
+      <div className="login-form__footer">
+        <Button size="large" type="primary" htmlType="submit">
+          Войти
+        </Button>
+        <p className="login-form__footer-text">
+          Нет аккаунта?{' '}
+          <Link className="login-form__footer-link" to={RouteNames.REGISTER}>
+            Зарегистрируйтесь
+          </Link>
+        </p>
+      </div>
     </form>
   );
 };
