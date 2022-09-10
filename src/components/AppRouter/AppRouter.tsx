@@ -3,6 +3,8 @@ import {privateRoutes} from '../../routes';
 import {publicRoutes} from '../../routes';
 import useAppSelector from '../../hooks/useAppSelector';
 
+import NotFound from '../../pages/NotFound';
+
 const AppRouter = () => {
   const {isAuth} = useAppSelector(({auth}) => auth);
 
@@ -11,28 +13,14 @@ const AppRouter = () => {
       {privateRoutes.map((route) => (
         <Route key={route.path} path={route.path} element={<route.element />} />
       ))}
-      <Route
-        path="*"
-        element={
-          <main style={{padding: '1rem'}}>
-            <p>Такой страницы не существует</p>
-          </main>
-        }
-      />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   ) : (
     <Routes>
       {publicRoutes.map((route) => (
         <Route key={route.path} path={route.path} element={<route.element />} />
       ))}
-      <Route
-        path="*"
-        element={
-          <main style={{padding: '1rem'}}>
-            <p>Такой страницы не существует</p>
-          </main>
-        }
-      />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
