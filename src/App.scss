@@ -1,5 +1,39 @@
+@use './scss/vars';
 @import '~antd/dist/antd.css';
 @import './scss//reset';
+
+font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/roboto.woff2') format('woff2'), url('./assets/fonts/roboto.woff') format('woff');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/robotomedium.woff2') format('woff2'), url('./assets/fonts/robotomedium.woff') format('woff');
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/robotobold.woff2') format('woff2'), url('./assets/fonts/robotobold.woff') format('woff');
+  font-style: normal;
+  font-weight: 700;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: vars.$black;
+  font-family: 'Roboto', sans-serif;
+}
 
 .h100 {
   height: calc(100vh - 64px);
