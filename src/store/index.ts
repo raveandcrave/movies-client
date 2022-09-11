@@ -1,11 +1,10 @@
 import {configureStore, ThunkAction, Action} from '@reduxjs/toolkit';
 import rootReducer from './reducers';
+import {kinopoiskApi} from '../services/kinopoiskApi';
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware(getDefaultMiddleware) {
-    return getDefaultMiddleware();
-  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(kinopoiskApi.middleware),
   devTools: process.env.NODE_ENV !== 'production',
 });
 

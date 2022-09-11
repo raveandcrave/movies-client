@@ -1,9 +1,13 @@
-import {useState} from 'react';
+import {useState, FC} from 'react';
 import {$authHost} from '../services/http';
 import {User} from '../types';
 
-const HomePage = () => {
+import {useGetFilmByIdQuery} from '../services/kinopoiskApi';
+
+const HomePage: FC = () => {
   const [users, setUsers] = useState<User[]>([]);
+
+  const {data: film, isFetching, isLoading, isSuccess, isError, error} = useGetFilmByIdQuery(326);
 
   const getUsers = () => {
     $authHost.get<User[]>('/users').then((res) => setUsers(res.data));
