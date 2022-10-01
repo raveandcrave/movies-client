@@ -1,0 +1,12 @@
+.new-films {
+  padding: 3rem;
+
+  &__list.ant-list {
+    margin-bottom: 3rem;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+}

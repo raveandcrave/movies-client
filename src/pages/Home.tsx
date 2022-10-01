@@ -1,8 +1,13 @@
 import {useState, FC} from 'react';
+import {Layout} from 'antd';
+
 import {$authHost} from '../services/http';
 import {User} from '../types';
 
 import {useGetFilmByIdQuery} from '../services/kinopoiskApi';
+import NewFilms from '../components/NewFilms';
+
+import './style.scss';
 
 const HomePage: FC = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -14,12 +19,15 @@ const HomePage: FC = () => {
   };
 
   return (
-    <>
-      <button onClick={() => getUsers()}>get users</button>
+    <Layout>
+      {/* <button onClick={() => getUsers()}>get users</button>
       {users.map((user) => {
         return <div key={user.email}>{user.email}</div>;
-      })}
-    </>
+      })} */}
+      <div className="homepage">
+        <NewFilms />
+      </div>
+    </Layout>
   );
 };
 
