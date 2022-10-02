@@ -1,6 +1,8 @@
 import {FC, useState} from 'react';
-import {Button, List, Row} from 'antd';
+import {Button, List, Row, Skeleton} from 'antd';
+import {Link} from 'react-router-dom';
 
+import {RouteNames} from '../../routes';
 import {useGetNewFilmsQuery} from '../../services/kinopoiskApi';
 
 import FilmCard from '../FilmCard';
@@ -10,18 +12,22 @@ import './style.scss';
 const NewFilms: FC = () => {
   const [limit, setLimit] = useState(10);
 
-  const {data: newFilms, isLoading, isFetching, isSuccess, isError} = useGetNewFilmsQuery(limit);
+  const {data: newFilms, isLoading, isFetching, isError} = useGetNewFilmsQuery(limit);
 
   return (
     <div className="new-films">
       <div className="new-films__header">
         <h2 className="new-films__title">Новые фильмы</h2>
         <div className="new-films__btn">
-          <Button type="primary" size="large">
-            Смотреть все
-          </Button>
+          <Link to={RouteNames.FILMS}>
+            <Button type="primary" size="large">
+              Смотреть все
+            </Button>
+          </Link>
         </div>
       </div>
+      {isError && <Row>Что-то пошло не так... :с</Row>}
+
       {newFilms && (
         <List
           grid={{gutter: 16, xs: 2, sm: 3, md: 4, lg: 4, xl: 5, xxl: 5}}
@@ -34,16 +40,19 @@ const NewFilms: FC = () => {
           )}
         />
       )}
+      <Skeleton loading={isFetching} active></Skeleton>
 
-      <Row justify="center">
-        <Button
-          type="primary"
-          size="large"
-          loading={isLoading || isFetching}
-          onClick={() => setLimit((prev) => prev + 10)}>
-          Показать еще
-        </Button>
-      </Row>
+      {newFilms && (
+        <Row justify="center">
+          <Button
+            type="primary"
+            size="large"
+            loading={isLoading || isFetching}
+            onClick={() => setLimit((prev) => prev + 10)}>
+            Показать еще
+          </Button>
+        </Row>
+      )}
     </div>
   );
 };
