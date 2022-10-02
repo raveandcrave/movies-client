@@ -2,10 +2,10 @@ import {FC} from 'react';
 import {Layout, Row, Col, Menu, MenuProps} from 'antd';
 import {Link, useNavigate, useLocation} from 'react-router-dom';
 
-import useAppSelector from '../../hooks/useAppSelector';
-import useAppDispatch from '../../hooks/useAppDispatch';
+import useAppSelector from '@/hooks/useAppSelector';
+import useAppDispatch from '@/hooks/useAppDispatch';
 
-import {logoutUser} from '../../store/reducers/auth/actionCreators';
+import {logoutUser} from '@/store/reducers/auth/actionCreators';
 
 import {RouteNames} from '../../routes';
 

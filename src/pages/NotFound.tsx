@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import {Layout, Row} from 'antd';
 
-import NotFound from '../components/NotFound';
+import NotFound from '@/components/NotFound';
 
 const NotFoundPage: FC = () => {
   return (

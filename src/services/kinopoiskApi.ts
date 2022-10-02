@@ -1,7 +1,7 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {API_KEY, API_URL} from '../constants/api';
 
-import {DataType, MovieType} from '../types/kinopoisk';
+import {DataType, MovieType} from '@/types/kinopoisk';
 
 export const kinopoiskApi = createApi({
   reducerPath: 'kinopoiskApi',

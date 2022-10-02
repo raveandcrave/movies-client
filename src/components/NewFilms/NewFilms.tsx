@@ -3,7 +3,7 @@ import {Button, List, Row, Skeleton} from 'antd';
 import {Link} from 'react-router-dom';
 
 import {RouteNames} from '../../routes';
-import {useGetNewFilmsQuery} from '../../services/kinopoiskApi';
+import {useGetNewFilmsQuery} from '@/services/kinopoiskApi';
 
 import FilmCard from '../FilmCard';
 

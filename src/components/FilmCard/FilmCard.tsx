@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import {Link} from 'react-router-dom';
 
-import {MovieType, MovieKindEnum} from '../../types/kinopoisk';
+import {MovieType, MovieKindEnum} from '@/types/kinopoisk';
 
 import './style.scss';
 

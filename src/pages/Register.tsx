@@ -1,6 +1,6 @@
 import {FC} from 'react';
 import {Layout, Row} from 'antd';
-import RegisterForm from '../components/RegisterForm';
+import RegisterForm from '@/components/RegisterForm';
 
 const RegisterPage: FC = () => {
   return (

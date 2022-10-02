@@ -1,10 +1,10 @@
 import {useState, FC} from 'react';
 import {Layout} from 'antd';
 
-import {$authHost} from '../services/http';
+import {$authHost} from '@/services/http';
 import {User} from '../types';
 
-import NewFilms from '../components/NewFilms';
+import NewFilms from '@/components/NewFilms';
 
 import './style.scss';
 

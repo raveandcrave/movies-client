@@ -7,8 +7,8 @@ import {useForm, Controller} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {UserOutlined, LockOutlined, MailOutlined} from '@ant-design/icons';
 
-import useAppDispatch from '../../hooks/useAppDispatch';
-import {registerUser} from '../../store/reducers/auth/actionCreators';
+import useAppDispatch from '@/hooks/useAppDispatch';
+import {registerUser} from '@/store/reducers/auth/actionCreators';
 
 import {RouteNames} from '../../routes';
 
