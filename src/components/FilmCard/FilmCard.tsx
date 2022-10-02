@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import {Link} from 'react-router-dom';
 
-import {MovieType} from '../../types/kinopoisk';
+import {MovieType, MovieKindEnum} from '../../types/kinopoisk';
 
 import './style.scss';
 
@@ -22,7 +22,9 @@ const FilmCard: FC<FilmCardProps> = ({film}) => {
         <Link to="/" className="film-card__link">
           <h3 className="film-card__title">{film.name}</h3>
         </Link>
-        <span className="film-card__info">{film.year}, фильм</span>
+        <span className="film-card__info">
+          {film.year}, {MovieKindEnum[film.type]}
+        </span>
       </div>
     </div>
   );

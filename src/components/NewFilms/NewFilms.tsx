@@ -9,7 +9,6 @@ import './style.scss';
 
 const NewFilms: FC = () => {
   const [limit, setLimit] = useState(10);
-  const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   const {data: newFilms, isLoading, isFetching, isSuccess, isError} = useGetNewFilmsQuery(limit);
 
@@ -42,7 +41,7 @@ const NewFilms: FC = () => {
           size="large"
           loading={isLoading || isFetching}
           onClick={() => setLimit((prev) => prev + 10)}>
-          Покзать еще
+          Показать еще
         </Button>
       </Row>
     </div>

@@ -1,3 +1,10 @@
+export enum MovieKindEnum {
+  movie = 'фильм',
+  cartoon = 'мультфильм',
+}
+
+type MovieKind = 'movie' | 'cartoon';
+
 export type DataType<T> = {
   limit: number;
   page: number;
@@ -30,7 +37,7 @@ export type MovieType = {
   movieLength?: number;
   names: Array<{name: string; _id: string}>;
   shortDescription?: string;
-  type: 'movie';
+  type: MovieKind;
   votes: {
     await: number;
     filmCritics: number;

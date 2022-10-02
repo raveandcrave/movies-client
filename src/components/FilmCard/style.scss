@@ -21,6 +21,17 @@
 
   &__image {
     transition: opacity 0.2s linear;
+    height: 35rem;
+
+    @media (max-width: vars.$lg) {
+      height: 30rem;
+    }
+    @media (max-width: vars.$sm) {
+      height: 28rem;
+    }
+    @media (max-width: vars.$xs) {
+      height: 20rem;
+    }
   }
 
   &__rating {
