@@ -1,21 +1,29 @@
 import {FC} from 'react';
 import {Link} from 'react-router-dom';
 
+import {MovieType} from '../../types/kinopoisk';
+
 import './style.scss';
 
-const FilmCard: FC = () => {
+interface FilmCardProps {
+  film: MovieType;
+}
+
+const FilmCard: FC<FilmCardProps> = ({film}) => {
   return (
     <div className="film-card">
       <div className="film-card__content">
-        <span className="film-card__rating">9.0</span>
-        <Link to="/">
-          <img src="https://placehold.co/300x450/orange/white" alt="" className="film-card__image" />
+        <span className="film-card__rating">{film.rating.kp}</span>
+        <Link to={`/film/${film.id}`}>
+          <img src={film.poster.previewUrl} alt={film.description} className="film-card__image" />
         </Link>
       </div>
-      <Link to="/" className="film-card__link">
-        <h3 className="film-card__title">Бэтмен</h3>
-      </Link>
-      <span className="film-card__info">2022, фильм</span>
+      <div>
+        <Link to="/" className="film-card__link">
+          <h3 className="film-card__title">{film.name}</h3>
+        </Link>
+        <span className="film-card__info">{film.year}, фильм</span>
+      </div>
     </div>
   );
 };
