@@ -36,10 +36,12 @@ const Navbar: FC = () => {
           </div>
         </div>
       ) : (
-        !isAuthPage && <Link to={RouteNames.LOGIN}>Войти</Link>
+        <Link to={RouteNames.LOGIN}>Войти</Link>
       ),
     },
   ];
+
+  if (isAuthPage) return null;
 
   return (
     <Layout.Header>

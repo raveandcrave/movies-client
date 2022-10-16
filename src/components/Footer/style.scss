@@ -1,0 +1,8 @@
+@use '@/scss/vars';
+
+.footer {
+  text-align: center;
+  background-color: vars.$dark-purple !important;
+  color: vars.$white !important;
+  margin-top: auto;
+}

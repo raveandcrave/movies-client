@@ -16,6 +16,12 @@ export type DataType<T> = {
   docs: T[];
 };
 
+type BudgetType = {
+  value: string;
+  currency: string;
+  _id: string;
+};
+
 export type MovieType = {
   id: number;
   name: string;
@@ -50,3 +56,21 @@ export type MovieType = {
     _id: string;
   };
 };
+
+export type SingleMovieType = {
+  budget: BudgetType;
+  genres: Array<{
+    name: string;
+  }>;
+  premiere: {
+    russia?: string;
+    world: string;
+  };
+  fees: {
+    russia: BudgetType;
+    use: BudgetType;
+    world: BudgetType;
+    _id: string;
+  };
+  slogan: string;
+} & MovieType;

@@ -2,6 +2,7 @@ import React from 'react';
 import HomePage from '../pages/Home';
 import LoginPage from '../pages/Login';
 import RegisterPage from '../pages/Register';
+import FilmPage from '../pages/Film';
 
 interface RouteProps {
   caseSensitive?: boolean;
@@ -15,7 +16,7 @@ export enum RouteNames {
   LOGIN = '/login',
   REGISTER = '/registration',
   FILMS = '/films',
-  FILM = '/film/:idFilm',
+  FILM = '/film/:filmId',
 }
 
 export const publicRoutes: RouteProps[] = [
@@ -23,12 +24,12 @@ export const publicRoutes: RouteProps[] = [
   {path: RouteNames.HOME, element: HomePage},
   {path: RouteNames.REGISTER, element: RegisterPage},
   {path: RouteNames.FILMS, element: HomePage},
-  {path: RouteNames.FILM, element: HomePage},
+  {path: RouteNames.FILM, element: FilmPage},
 ];
 export const privateRoutes: RouteProps[] = [
   {path: RouteNames.LOGIN, element: LoginPage},
   {path: RouteNames.HOME, element: HomePage},
   {path: RouteNames.REGISTER, element: RegisterPage},
   {path: RouteNames.FILMS, element: HomePage},
-  {path: RouteNames.FILM, element: HomePage},
+  {path: RouteNames.FILM, element: FilmPage},
 ];
