@@ -1,21 +1,21 @@
 import {FC} from 'react';
 import {Link} from 'react-router-dom';
 
-import {MovieType, MovieKindEnum} from '@/types/kinopoisk';
+import {MovieDto, MovieTypeEnum} from '@/types/kinopoisk';
 
 import './style.scss';
 
 interface FilmCardProps {
-  film: MovieType;
+  film: MovieDto;
 }
 
 const FilmCard: FC<FilmCardProps> = ({film}) => {
   return (
     <div className="film-card">
       <div className="film-card__content">
-        <span className="film-card__rating">{film.rating.kp}</span>
+        <span className="film-card__rating">{film.rating.kp.toFixed(1)}</span>
         <Link to={`/film/${film.id}`}>
-          <img src={film.poster.previewUrl} alt={film.description} className="film-card__image" />
+          <img src={film.poster?.previewUrl} alt={film.description} className="film-card__image" />
         </Link>
       </div>
       <div>
@@ -23,7 +23,7 @@ const FilmCard: FC<FilmCardProps> = ({film}) => {
           <h3 className="film-card__title">{film.name}</h3>
         </Link>
         <span className="film-card__info">
-          {film.year}, {MovieKindEnum[film.type]}
+          {film.year}, {MovieTypeEnum[film.type]}
         </span>
       </div>
     </div>

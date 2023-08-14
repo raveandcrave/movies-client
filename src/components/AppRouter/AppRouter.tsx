@@ -3,7 +3,7 @@ import {privateRoutes} from '../../routes';
 import {publicRoutes} from '../../routes';
 import useAppSelector from '../../hooks/useAppSelector';
 
-import NotFound from '../../pages/NotFound';
+import NotFound from '../../pages/NotFoundPage';
 
 const AppRouter = () => {
   const {isAuth} = useAppSelector(({auth}) => auth);

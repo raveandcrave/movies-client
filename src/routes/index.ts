@@ -1,8 +1,8 @@
 import React from 'react';
-import HomePage from '../pages/Home';
-import LoginPage from '../pages/Login';
-import RegisterPage from '../pages/Register';
-import FilmPage from '../pages/Film';
+import HomePage from '../pages/HomePage';
+import LoginPage from '../pages/LoginPage';
+import RegisterPage from '../pages/RegisterPage';
+import FilmPage from '../pages/FilmPage';
 
 interface RouteProps {
   caseSensitive?: boolean;

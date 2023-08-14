@@ -9,14 +9,17 @@ interface FilmProps {
 }
 
 const Film: FC<FilmProps> = ({filmId}) => {
-  const {data: film, isError, isLoading} = useGetFilmByIdQuery(+filmId);
-  if (!film) return null;
+  const {data, isError, isLoading} = useGetFilmByIdQuery(+filmId);
+
+  if (!data?.docs[0]) return null;
+
+  const film = data.docs[0];
 
   return (
     <div className="layout-container">
       <Row gutter={20}>
         <Col span={6}>
-          <img src={film.poster.url} alt={film.name}></img>
+          <img src={film.poster?.url} alt={film.name}></img>
         </Col>
         <Col span={18}>
           <Typography.Title level={1}>
