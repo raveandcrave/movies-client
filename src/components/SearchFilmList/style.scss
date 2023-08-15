@@ -1,0 +1,7 @@
+@use '../../scss/vars';
+
+.search-film__title {
+  &:hover {
+    color: vars.$primary-color;
+  }
+}

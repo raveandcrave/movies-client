@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import {Row, Col, Button, Typography, Rate} from 'antd';
+import {Row, Col, Button, Typography} from 'antd';
 import {useGetFilmByIdQuery} from '@/services/kinopoiskApi';
 
 import FilmInfo from '@/components/FilmInfo';
@@ -36,15 +36,6 @@ const Film: FC<FilmProps> = ({filmId}) => {
       <Typography.Title level={2}>Описание</Typography.Title>
       <Typography.Text>{film.description}</Typography.Text>
       <Typography.Title level={2}>Рейтинг фильма</Typography.Title>
-      <Rate
-        disabled
-        count={10}
-        allowHalf
-        defaultValue={film.rating.kp}
-        character={() => {
-          return <div>33</div>;
-        }}
-      />
     </div>
   );
 };

@@ -3,6 +3,11 @@ import {API_KEY, API_URL} from '../constants/api';
 
 import {DataType, MovieDto} from '@/types/kinopoisk';
 
+interface SearchFilmData {
+  limit?: number;
+  query: string;
+}
+
 export const kinopoiskApi = createApi({
   reducerPath: 'kinopoiskApi',
   baseQuery: fetchBaseQuery({
@@ -21,7 +26,11 @@ export const kinopoiskApi = createApi({
       query: (limit) =>
         `/v1.3/movie?field=rating.kp&search=1-10&field=year&search=2022-2023&limit=${limit}&sortField=year&sortType=-1`,
     }),
+    getSearchFilms: builder.query<MovieDto[], SearchFilmData>({
+      query: ({limit = 20, query}) => `/v1.3/movie?${query}&limit=${limit}&sortField=year&sortType=-1`,
+      transformResponse: (movies: DataType<MovieDto>, meta, arg) => movies.docs,
+    }),
   }),
 });
 
-export const {useGetFilmByIdQuery, useGetNewFilmsQuery} = kinopoiskApi;
+export const {useGetFilmByIdQuery, useGetNewFilmsQuery, useLazyGetSearchFilmsQuery} = kinopoiskApi;

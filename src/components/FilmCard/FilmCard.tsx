@@ -20,7 +20,7 @@ const FilmCard: FC<FilmCardProps> = ({film}) => {
       </div>
       <div>
         <Link to={`/film/${film.id}`} className="film-card__link">
-          <h3 className="film-card__title">{film.name}</h3>
+          <h3 className="film-card__title">{film.name ?? film.alternativeName}</h3>
         </Link>
         <span className="film-card__info">
           {film.year}, {MovieTypeEnum[film.type]}

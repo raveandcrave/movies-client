@@ -1,0 +1,5 @@
+.film-info {
+  &__row:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}

@@ -1,8 +1,8 @@
 @use './scss/vars';
-@import '~antd/dist/antd.css';
+@import '~antd/dist/reset.css';
 @import './scss//reset';
 
-font-face {
+@font-face {
   font-family: 'Roboto';
   src: url('./assets/fonts/roboto.woff2') format('woff2'), url('./assets/fonts/roboto.woff') format('woff');
   font-style: normal;

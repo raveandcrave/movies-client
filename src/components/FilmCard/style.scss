@@ -57,4 +57,12 @@
   &__info {
     font-size: 1.6rem;
   }
+
+  &__link {
+    color: vars.$black;
+
+    &:hover {
+      color: vars.$primary-color;
+    }
+  }
 }

@@ -2,7 +2,20 @@
   justify-content: end;
 
   &__user {
+    color: yellow;
     display: flex;
     gap: 10px;
+  }
+}
+
+.navbar {
+  &__link {
+    display: flex;
+    gap: 10px;
+    color: rgb(255 255 255 / 65%);
+
+    &:hover {
+      color: rgb(255 255 255 / 100%);
+    }
   }
 }

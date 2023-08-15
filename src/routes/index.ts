@@ -1,8 +1,8 @@
-import React from 'react';
-import HomePage from '../pages/HomePage';
-import LoginPage from '../pages/LoginPage';
-import RegisterPage from '../pages/RegisterPage';
-import FilmPage from '../pages/FilmPage';
+import HomePage from '@/pages/HomePage';
+import LoginPage from '@/pages/LoginPage';
+import RegisterPage from '@/pages/RegisterPage';
+import FilmPage from '@/pages/FilmPage';
+import SearchPage from '@/pages/SearchPage';
 
 interface RouteProps {
   caseSensitive?: boolean;
@@ -17,6 +17,7 @@ export enum RouteNames {
   REGISTER = '/registration',
   FILMS = '/films',
   FILM = '/film/:filmId',
+  SEARCH = '/search',
 }
 
 export const publicRoutes: RouteProps[] = [
@@ -25,6 +26,7 @@ export const publicRoutes: RouteProps[] = [
   {path: RouteNames.REGISTER, element: RegisterPage},
   {path: RouteNames.FILMS, element: HomePage},
   {path: RouteNames.FILM, element: FilmPage},
+  {path: RouteNames.SEARCH, element: SearchPage},
 ];
 export const privateRoutes: RouteProps[] = [
   {path: RouteNames.LOGIN, element: LoginPage},
@@ -32,4 +34,5 @@ export const privateRoutes: RouteProps[] = [
   {path: RouteNames.REGISTER, element: RegisterPage},
   {path: RouteNames.FILMS, element: HomePage},
   {path: RouteNames.FILM, element: FilmPage},
+  {path: RouteNames.SEARCH, element: SearchPage},
 ];

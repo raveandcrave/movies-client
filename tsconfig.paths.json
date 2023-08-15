@@ -4,11 +4,13 @@
     "paths": {
       "@/types/*": ["src/types/*"],
       "@/components/*": ["src/components/*"],
+      "@/pages/*": ["src/pages/*"],
       "@/services/*": ["src/services/*"],
       "@/scss/*": ["src/scss/*"],
       "@/constants/*": ["src/constants/*"],
       "@/hooks/*": ["src/hooks/*"],
-      "@/store/*": ["src/store/*"]
+      "@/store/*": ["src/store/*"],
+      "@/assets/*": ["src/assets/*"]
     }
   }
 }

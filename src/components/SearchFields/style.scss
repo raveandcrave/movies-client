@@ -1,0 +1,12 @@
+.search-fields {
+  display: flex;
+  flex-direction: column;
+
+  &__item-title:not(:first-child) {
+    margin-top: 10px;
+  }
+
+  &__button {
+    margin-top: 15px;
+  }
+}

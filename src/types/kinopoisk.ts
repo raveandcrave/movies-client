@@ -3,10 +3,11 @@ export enum MovieTypeEnum {
   cartoon = 'мультфильм',
   anime = 'аниме',
   'tv-series' = 'сериал',
-  'mini-series' = 'мини-сериал',
+  'animated-series' = 'Анимационный сериал',
+  'tv-show' = 'ТВ-шоу',
 }
 
-type MovieType = 'movie' | 'cartoon' | 'anime' | 'tv-series' | 'mini-series';
+type MovieType = 'movie' | 'cartoon' | 'anime' | 'tv-series' | 'animated-series' | 'tv-show';
 
 export type DataType<T> = {
   limit: number;

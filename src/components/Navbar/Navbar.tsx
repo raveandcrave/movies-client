@@ -1,6 +1,7 @@
 import {FC} from 'react';
 import {Layout, Row, Col, Menu, MenuProps} from 'antd';
 import {Link, useNavigate, useLocation} from 'react-router-dom';
+import {SearchOutlined} from '@ant-design/icons';
 
 import useAppSelector from '@/hooks/useAppSelector';
 import useAppDispatch from '@/hooks/useAppDispatch';
@@ -36,7 +37,9 @@ const Navbar: FC = () => {
           </div>
         </div>
       ) : (
-        <Link to={RouteNames.LOGIN}>Войти</Link>
+        <Link className="navbar__link" to={RouteNames.LOGIN}>
+          Войти
+        </Link>
       ),
     },
   ];
@@ -45,9 +48,19 @@ const Navbar: FC = () => {
 
   return (
     <Layout.Header>
-      <Row justify="end">
+      <Row justify="center">
         <Col span={8}>
-          <div className="logo"></div>
+          <Link className="navbar__link" to={RouteNames.HOME}>
+            На главную
+          </Link>
+        </Col>
+        <Col span={8}>
+          <Row justify={'center'}>
+            <Link className="navbar__link" to={RouteNames.SEARCH}>
+              <SearchOutlined />
+              Поиск
+            </Link>
+          </Row>
         </Col>
         <Col span={8}>
           <Menu className="menu" theme="dark" mode="horizontal" items={menuItems} selectable={false} />
