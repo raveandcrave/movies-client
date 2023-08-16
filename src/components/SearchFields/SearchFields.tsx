@@ -1,22 +1,21 @@
-import {FC} from 'react';
+import {FC, useEffect} from 'react';
 import {Checkbox, Input, DatePicker, Typography, Slider, Button, Select} from 'antd';
 import {useForm, Controller} from 'react-hook-form';
-import dayjs, {Dayjs} from 'dayjs';
+import dayjs from 'dayjs';
+import {useSearchParams} from 'react-router-dom';
 import './style.scss';
 import {SearchOutlined} from '@ant-design/icons';
 import {MovieTypeEnum} from '@/types/kinopoisk';
+import {SearchForm} from './SearchFields.types';
+import {
+  generateFilterQueryParams,
+  parseSearchParamsToFormValues,
+  generateKinopoiskApiQueryString,
+} from '@/helpers/searchFormHelpers/searchFormHelpers';
 
 const {RangePicker} = DatePicker;
 
 const typeOptions = Object.entries(MovieTypeEnum).map(([key, value]) => ({label: value, value: key}));
-
-interface SearchForm {
-  name?: string;
-  date?: [Dayjs, Dayjs];
-  rating?: [number, number];
-  type?: string;
-  isSeries?: boolean;
-}
 
 interface SearchFieldsProps {
   isLoading: boolean;
@@ -24,19 +23,24 @@ interface SearchFieldsProps {
 }
 
 const SearchFields: FC<SearchFieldsProps> = ({isLoading, getSearchFilms}) => {
-  const {control, handleSubmit} = useForm<SearchForm>();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const {control, handleSubmit, reset} = useForm<SearchForm>();
 
-  const onSubmit = handleSubmit(({name, date, rating, type, isSeries}: SearchForm) => {
-    const queryName = name ? `&field=name&search=${name}` : '';
-    const queryDate = date ? `&field=year&search=${date[0].year()}-${date[1].year()}` : '';
-    const queryRating = rating ? `&field=rating.kp&search=${rating[0]}-${rating[1]}` : '';
-    const queryType = type ? `&field=type&search=${type}` : '';
-    const queryIsSerires = isSeries ? '@field=isSeries&search=true' : '';
+  const onSubmit = handleSubmit((formData: SearchForm) => {
+    const queryParamsArray = generateFilterQueryParams(formData);
+    const queryString = generateKinopoiskApiQueryString(formData);
 
-    const query = queryName + queryDate + queryRating + queryType + queryIsSerires;
+    setSearchParams(queryParamsArray);
 
-    getSearchFilms({query}, true);
+    getSearchFilms({query: queryString}, true);
   });
+
+  useEffect(() => {
+    const parsedSearchParams = parseSearchParamsToFormValues(searchParams);
+    const queryString = generateKinopoiskApiQueryString(parsedSearchParams);
+    reset(parsedSearchParams);
+    getSearchFilms({query: queryString}, true);
+  }, []);
 
   return (
     <div className="search-fields">
@@ -78,7 +82,7 @@ const SearchFields: FC<SearchFieldsProps> = ({isLoading, getSearchFilms}) => {
           control={control}
           name="type"
           render={({field, fieldState}) => (
-            <Select {...field} style={{width: '100%'}} placeholder="Выберите тип" options={typeOptions} />
+            <Select {...field} allowClear style={{width: '100%'}} placeholder="Выберите тип" options={typeOptions} />
           )}
         />
 
