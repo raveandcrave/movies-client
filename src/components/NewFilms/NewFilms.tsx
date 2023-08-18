@@ -31,7 +31,7 @@ const NewFilms: FC = () => {
       {newFilms && (
         <List
           grid={{gutter: 16, xs: 2, sm: 3, md: 4, lg: 4, xl: 5, xxl: 5}}
-          dataSource={newFilms.docs}
+          dataSource={newFilms}
           className="new-films__list"
           renderItem={(movie) => (
             <List.Item>

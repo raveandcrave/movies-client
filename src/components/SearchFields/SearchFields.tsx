@@ -18,11 +18,11 @@ const {RangePicker} = DatePicker;
 const typeOptions = Object.entries(MovieTypeEnum).map(([key, value]) => ({label: value, value: key}));
 
 interface SearchFieldsProps {
-  isLoading: boolean;
+  isFetching: boolean;
   getSearchFilms: (arg: {query: string}, preferCacheValue?: boolean) => void;
 }
 
-const SearchFields: FC<SearchFieldsProps> = ({isLoading, getSearchFilms}) => {
+const SearchFields: FC<SearchFieldsProps> = ({isFetching, getSearchFilms}) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const {control, handleSubmit, reset} = useForm<SearchForm>();
 
@@ -39,7 +39,10 @@ const SearchFields: FC<SearchFieldsProps> = ({isLoading, getSearchFilms}) => {
     const parsedSearchParams = parseSearchParamsToFormValues(searchParams);
     const queryString = generateKinopoiskApiQueryString(parsedSearchParams);
     reset(parsedSearchParams);
-    getSearchFilms({query: queryString}, true);
+
+    if (queryString) {
+      getSearchFilms({query: queryString}, true);
+    }
   }, []);
 
   return (
@@ -107,7 +110,7 @@ const SearchFields: FC<SearchFieldsProps> = ({isLoading, getSearchFilms}) => {
         />
 
         <Button
-          disabled={isLoading}
+          disabled={isFetching}
           className="search-fields__button"
           type="primary"
           htmlType="submit"

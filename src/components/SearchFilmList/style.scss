@@ -1,7 +1,13 @@
 @use '../../scss/vars';
 
-.search-film__title {
-  &:hover {
-    color: vars.$primary-color;
+.search-film {
+  &__empty-message {
+    padding: 20px;
+  }
+
+  &__title {
+    &:hover {
+      color: vars.$primary-color;
+    }
   }
 }

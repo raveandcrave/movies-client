@@ -5,6 +5,7 @@ import {DataType, MovieDto} from '@/types/kinopoisk';
 
 interface SearchFilmData {
   limit?: number;
+  page?: number;
   query: string;
 }
 
@@ -22,13 +23,15 @@ export const kinopoiskApi = createApi({
     getFilmById: builder.query<DataType<MovieDto>, number>({
       query: (id) => `/v1.3/movie?field=id&search=${id}`,
     }),
-    getNewFilms: builder.query<DataType<MovieDto>, number>({
+    getNewFilms: builder.query<MovieDto[], number>({
       query: (limit) =>
         `/v1.3/movie?field=rating.kp&search=1-10&field=year&search=2022-2023&limit=${limit}&sortField=year&sortType=-1`,
-    }),
-    getSearchFilms: builder.query<MovieDto[], SearchFilmData>({
-      query: ({limit = 20, query}) => `/v1.3/movie?${query}&limit=${limit}&sortField=year&sortType=-1`,
       transformResponse: (movies: DataType<MovieDto>, meta, arg) => movies.docs,
+    }),
+    getSearchFilms: builder.query<DataType<MovieDto>, SearchFilmData>({
+      query: ({limit = 10, page = 1, query}) =>
+        `/v1.3/movie?${query}&limit=${limit}&page=${page}&sortField=year&sortType=-1`,
+      // transformResponse: (movies: DataType<MovieDto>, meta, arg) => movies.docs,
     }),
   }),
 });

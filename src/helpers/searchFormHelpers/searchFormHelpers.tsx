@@ -15,7 +15,7 @@ export const generateKinopoiskApiQueryString = ({name, date, rating, type, isSer
 
 export const generateFilterQueryParams = ({name, date, rating, type, isSeries}: SearchForm): [string, string][] => {
   const queryParams = {
-    name: name?.trim(),
+    name: name ? name.trim() : undefined,
     type,
     isSeries: isSeries ? isSeries.toString() : undefined,
     date: date && `${date[0].year()}-${date[1].year()}`,

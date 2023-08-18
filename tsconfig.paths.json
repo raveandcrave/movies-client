@@ -11,7 +11,8 @@
       "@/hooks/*": ["src/hooks/*"],
       "@/store/*": ["src/store/*"],
       "@/assets/*": ["src/assets/*"],
-      "@/helpers/*": ["src/helpers/*"]
+      "@/helpers/*": ["src/helpers/*"],
+      "@/routes/*": ["src/routes/*"]
     }
   }
 }
