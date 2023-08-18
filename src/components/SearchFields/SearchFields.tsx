@@ -7,11 +7,9 @@ import './style.scss';
 import {SearchOutlined} from '@ant-design/icons';
 import {MovieTypeEnum} from '@/types/kinopoisk';
 import {SearchForm} from './SearchFields.types';
-import {
-  generateFilterQueryParams,
-  parseSearchParamsToFormValues,
-  generateKinopoiskApiQueryString,
-} from '@/helpers/searchFormHelpers/searchFormHelpers';
+import {generateFilterQueryParams} from '@/helpers/generateFilterQueryParams/generateFilterQueryParams';
+import {parseSearchParamsToFormValues} from '@/helpers/parseSearchParamsToFormValues/parseSearchParamsToFormValues';
+import {generateKinopoiskApiQueryString} from '@/helpers/generateKinopoiskApiQueryString/generateKinopoiskApiQueryString';
 
 const {RangePicker} = DatePicker;
 

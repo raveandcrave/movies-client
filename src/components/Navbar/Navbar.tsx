@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import {Layout, Row, Col, Menu, MenuProps} from 'antd';
 import {Link, useNavigate, useLocation} from 'react-router-dom';
-import {SearchOutlined} from '@ant-design/icons';
+import {HomeOutlined, SearchOutlined} from '@ant-design/icons';
 
 import useAppSelector from '@/hooks/useAppSelector';
 import useAppDispatch from '@/hooks/useAppDispatch';
@@ -48,11 +48,13 @@ const Navbar: FC = () => {
 
   return (
     <Layout.Header>
-      <Row justify="center">
+      <Row justify="center" align={'middle'}>
         <Col span={8}>
-          <Link className="navbar__link" to={RouteNames.HOME}>
-            На главную
-          </Link>
+          <Row justify={'center'}>
+            <Link className="navbar__link" to={RouteNames.HOME}>
+              <HomeOutlined style={{fontSize: 25}} />
+            </Link>
+          </Row>
         </Col>
         <Col span={8}>
           <Row justify={'center'}>
