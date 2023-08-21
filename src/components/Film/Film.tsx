@@ -3,17 +3,22 @@ import {Row, Col, Button, Typography} from 'antd';
 import {useGetFilmByIdQuery} from '@/services/kinopoiskApi';
 
 import FilmInfo from '@/components/FilmInfo';
+import Sequels from '@/components/Sequels';
+import SimilarMovies from '@/components/SimilarMovies';
+import FilmSkeleton from './FilmSkeleton';
 
 interface FilmProps {
   filmId: string;
 }
 
 const Film: FC<FilmProps> = ({filmId}) => {
-  const {data, isError, isLoading} = useGetFilmByIdQuery(+filmId);
+  const {data: film, isError, isLoading, isFetching} = useGetFilmByIdQuery(+filmId);
 
-  if (!data?.docs[0]) return null;
+  if (isLoading || isFetching) {
+    return <FilmSkeleton />;
+  }
 
-  const film = data.docs[0];
+  if (!film) return null;
 
   return (
     <div className="layout-container">
@@ -26,16 +31,17 @@ const Film: FC<FilmProps> = ({filmId}) => {
             {film.name} ({film.year})
           </Typography.Title>
           <p>{film.alternativeName}</p>
-          <div className="buttons">
+          {/* <div className="buttons">
             <Button>буду смотреть</Button>
-          </div>
+          </div> */}
           <Typography.Title level={2}>О фильме</Typography.Title>
           <FilmInfo film={film} />
         </Col>
       </Row>
       <Typography.Title level={2}>Описание</Typography.Title>
       <Typography.Text>{film.description}</Typography.Text>
-      <Typography.Title level={2}>Рейтинг фильма</Typography.Title>
+      {film.sequelsAndPrequels?.length && <Sequels sequels={film.sequelsAndPrequels} />}
+      {film.similarMovies?.length && <SimilarMovies similarMovies={film.similarMovies} />}
     </div>
   );
 };

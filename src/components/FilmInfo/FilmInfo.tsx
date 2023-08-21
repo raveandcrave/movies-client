@@ -10,13 +10,17 @@ interface FilmInfoProps {
 }
 
 const FilmInfo: FC<FilmInfoProps> = ({film}) => {
-  const {year, genres, slogan, budget, fees, premiere, movieLength} = film;
+  const {year, genres, slogan, budget, fees, premiere, movieLength, countries} = film;
 
   return (
     <>
       <Row className="film-info__row">
         <Col span={8}>Год производства</Col>
         <Col span={16}>{year}</Col>
+      </Row>
+      <Row className="film-info__row">
+        <Col span={8}>Страна</Col>
+        <Col span={16}>{countries?.length ? countries.map((item) => item.name).join(', ') : '-'}</Col>
       </Row>
       <Row className="film-info__row">
         <Col span={8}>Жанр</Col>
@@ -28,15 +32,15 @@ const FilmInfo: FC<FilmInfoProps> = ({film}) => {
       </Row>
       <Row className="film-info__row">
         <Col span={8}>Бюджет</Col>
-        <Col span={16}>{budget?.value ? budget.currency + budget.value : '-'}</Col>
+        <Col span={16}>{budget?.value ? budget.currency + budget.value.toLocaleString() : '-'}</Col>
       </Row>
       <Row className="film-info__row">
         <Col span={8}>Сборы в мире</Col>
-        <Col span={16}>{fees?.world ? fees.world.currency + fees.world.value : '-'}</Col>
+        <Col span={16}>{fees?.world ? fees.world.currency + fees.world.value.toLocaleString() : '-'}</Col>
       </Row>
       <Row className="film-info__row">
         <Col span={8}>Сборы в России</Col>
-        <Col span={16}>{fees?.russia ? fees.russia?.currency + fees.russia?.value : '-'}</Col>
+        <Col span={16}>{fees?.russia ? fees.russia?.currency + fees.russia?.value.toLocaleString() : '-'}</Col>
       </Row>
       <Row className="film-info__row">
         <Col span={8}>Премьера в мире</Col>

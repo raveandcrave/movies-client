@@ -1,0 +1,33 @@
+@use '../../scss/vars';
+
+.film-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  &__item {
+    max-width: 150px;
+    width: 150px;
+
+    &:hover {
+      .film-cards__item-image {
+        transform: scale(1.02);
+        filter: grayscale(80%);
+      }
+      span {
+        color: vars.$primary-color;
+      }
+    }
+  }
+
+  &__item-image {
+    transition: transform 0.2s linear, filter 0.2s linear;
+  }
+
+  &__item-title {
+    display: block;
+    font-weight: 500;
+    transition: color 0.2s linear;
+    color: vars.$text-color;
+  }
+}

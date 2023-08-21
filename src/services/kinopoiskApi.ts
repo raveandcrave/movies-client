@@ -20,8 +20,8 @@ export const kinopoiskApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getFilmById: builder.query<DataType<MovieDto>, number>({
-      query: (id) => `/v1.3/movie?field=id&search=${id}`,
+    getFilmById: builder.query<MovieDto, number>({
+      query: (id) => `/v1.3/movie/${id}`,
     }),
     getNewFilms: builder.query<MovieDto[], number>({
       query: (limit) =>
@@ -31,7 +31,6 @@ export const kinopoiskApi = createApi({
     getSearchFilms: builder.query<DataType<MovieDto>, SearchFilmData>({
       query: ({limit = 10, page = 1, query}) =>
         `/v1.3/movie?${query}&limit=${limit}&page=${page}&sortField=year&sortType=-1`,
-      // transformResponse: (movies: DataType<MovieDto>, meta, arg) => movies.docs,
     }),
   }),
 });

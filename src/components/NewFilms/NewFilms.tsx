@@ -9,8 +9,10 @@ import FilmCard from '../FilmCard';
 
 import './style.scss';
 
+const defaultLimit = 14;
+
 const NewFilms: FC = () => {
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(defaultLimit);
 
   const {data: newFilms, isLoading, isFetching, isError} = useGetNewFilmsQuery(limit);
 
@@ -30,7 +32,7 @@ const NewFilms: FC = () => {
 
       {newFilms && (
         <List
-          grid={{gutter: 16, xs: 2, sm: 3, md: 4, lg: 4, xl: 5, xxl: 5}}
+          grid={{gutter: 16, xs: 2, sm: 3, md: 4, lg: 4, xl: 5, xxl: 7}}
           dataSource={newFilms}
           className="new-films__list"
           renderItem={(movie) => (
@@ -48,7 +50,7 @@ const NewFilms: FC = () => {
             type="primary"
             size="large"
             loading={isLoading || isFetching}
-            onClick={() => setLimit((prev) => prev + 10)}>
+            onClick={() => setLimit((prev) => prev + defaultLimit)}>
             Показать еще
           </Button>
         </Row>
