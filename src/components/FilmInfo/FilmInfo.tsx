@@ -36,11 +36,11 @@ const FilmInfo: FC<FilmInfoProps> = ({film}) => {
       </Row>
       <Row className="film-info__row">
         <Col span={8}>Сборы в мире</Col>
-        <Col span={16}>{fees?.world ? fees.world.currency + fees.world.value.toLocaleString() : '-'}</Col>
+        <Col span={16}>{fees?.world.value ? fees.world.currency + fees.world.value.toLocaleString() : '-'}</Col>
       </Row>
       <Row className="film-info__row">
         <Col span={8}>Сборы в России</Col>
-        <Col span={16}>{fees?.russia ? fees.russia?.currency + fees.russia?.value.toLocaleString() : '-'}</Col>
+        <Col span={16}>{fees?.russia.value ? fees.russia?.currency + fees.russia?.value.toLocaleString() : '-'}</Col>
       </Row>
       <Row className="film-info__row">
         <Col span={8}>Премьера в мире</Col>

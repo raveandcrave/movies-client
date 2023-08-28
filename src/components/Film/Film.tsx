@@ -1,5 +1,5 @@
 import {FC} from 'react';
-import {Row, Col, Button, Typography} from 'antd';
+import {Row, Col, Typography} from 'antd';
 import {useGetFilmByIdQuery} from '@/services/kinopoiskApi';
 
 import FilmInfo from '@/components/FilmInfo';
@@ -12,7 +12,7 @@ interface FilmProps {
 }
 
 const Film: FC<FilmProps> = ({filmId}) => {
-  const {data: film, isError, isLoading, isFetching} = useGetFilmByIdQuery(+filmId);
+  const {data: film, isLoading, isFetching} = useGetFilmByIdQuery(+filmId);
 
   if (isLoading || isFetching) {
     return <FilmSkeleton />;
@@ -40,8 +40,8 @@ const Film: FC<FilmProps> = ({filmId}) => {
       </Row>
       <Typography.Title level={2}>Описание</Typography.Title>
       <Typography.Text>{film.description}</Typography.Text>
-      {film.sequelsAndPrequels?.length && <Sequels sequels={film.sequelsAndPrequels} />}
-      {film.similarMovies?.length && <SimilarMovies similarMovies={film.similarMovies} />}
+      {!!film.sequelsAndPrequels?.length && <Sequels sequels={film.sequelsAndPrequels} />}
+      {!!film.similarMovies?.length && <SimilarMovies similarMovies={film.similarMovies} />}
     </div>
   );
 };

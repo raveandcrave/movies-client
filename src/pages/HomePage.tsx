@@ -1,19 +1,16 @@
-import {useState, FC} from 'react';
+import {FC} from 'react';
 import {Layout} from 'antd';
-
-import {$authHost} from '@/services/http';
-import {User} from '../types';
 
 import NewFilms from '@/components/NewFilms';
 
 import './style.scss';
 
 const HomePage: FC = () => {
-  const [users, setUsers] = useState<User[]>([]);
+  // const [users, setUsers] = useState<User[]>([]);
 
-  const getUsers = () => {
-    $authHost.get<User[]>('/users').then((res) => setUsers(res.data));
-  };
+  // const getUsers = () => {
+  //   $authHost.get<User[]>('/users').then((res) => setUsers(res.data));
+  // };
 
   return (
     <Layout>
